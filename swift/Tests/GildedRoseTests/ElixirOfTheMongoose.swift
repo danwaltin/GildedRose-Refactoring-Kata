@@ -1,16 +1,18 @@
 @testable import GildedRose
 import Testing
 
+
+
 struct ElixirOfTheMongoose {
 	
-	private func appWithElixitOfTheMongoose(sellIn: Int, quality: Int) -> GildedRose {
+	private func appWithElixirOfTheMongoose(sellIn: Int, quality: Int) -> GildedRose {
 		let items = [Item(name: "Elixir of the Mongoose", sellIn: sellIn, quality: quality)]
 		return GildedRose(items: items)
 	}
 	
 	@Test
 	func nameIsSame() {
-		let app = appWithElixitOfTheMongoose(sellIn: 5, quality: 5)
+		let app = appWithElixirOfTheMongoose(sellIn: 5, quality: 5)
 		
 		#expect(app.items[0].name == "Elixir of the Mongoose")
 		
@@ -25,21 +27,21 @@ struct ElixirOfTheMongoose {
 	
 	@Test
 	func startingAtZero_day0() {
-		let app = appWithElixitOfTheMongoose(sellIn: 0, quality: 0)
+		let app = appWithElixirOfTheMongoose(sellIn: 0, quality: 0)
 		
 		expect(sellIn: 0, quality: 0, app)
 	}
 	
 	@Test
 	func sellIn_quality_different_day0() {
-		let app = appWithElixitOfTheMongoose(sellIn: 8, quality: 16)
+		let app = appWithElixirOfTheMongoose(sellIn: 8, quality: 16)
 		
 		expect(sellIn: 8, quality: 16, app)
 	}
 	
 	@Test
 	func sellIn_and_quality_decreases_by1_each_day() {
-		let app = appWithElixitOfTheMongoose(sellIn: 8, quality: 16)
+		let app = appWithElixirOfTheMongoose(sellIn: 8, quality: 16)
 		
 		app.updateQuality()
 		
@@ -56,7 +58,7 @@ struct ElixirOfTheMongoose {
 	
 	@Test
 	func qualityDecreasesTwiceAsFastAfterSellDate() {
-		let app = appWithElixitOfTheMongoose(sellIn: 1, quality: 6)
+		let app = appWithElixirOfTheMongoose(sellIn: 1, quality: 6)
 		
 		app.updateQuality()
 		
@@ -73,7 +75,7 @@ struct ElixirOfTheMongoose {
 	
 	@Test
 	func qualityNeverGoUnder0() {
-		let app = appWithElixitOfTheMongoose(sellIn: 5, quality: 1)
+		let app = appWithElixirOfTheMongoose(sellIn: 5, quality: 1)
 		
 		app.updateQuality()
 		
