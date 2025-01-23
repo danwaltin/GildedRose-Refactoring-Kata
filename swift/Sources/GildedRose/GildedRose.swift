@@ -12,7 +12,8 @@ public class GildedRose {
 	private func updateItem(_ item: Item) -> Item {
 		
 		if item.name == "Sulfuras, Hand of Ragnaros" {
-			return updateSulfuras(item)
+			let inventoryItem = SulfurasHandOfRagnaros(name: item.name, sellIn: item.sellIn, quality: item.quality)
+			return inventoryItem.updateQuality().asItem()
 		}
 		
 		if item.name == "Aged Brie" {
@@ -43,10 +44,6 @@ public class GildedRose {
 		}
 
 		return updated
-	}
-	
-	private func updateSulfuras(_ item: Item) -> Item {
-		return item
 	}
 	
 	private func updateBackstagePasses(_ item: Item) -> Item {
