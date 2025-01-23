@@ -23,91 +23,20 @@ extension InventoryItem {
 }
 extension Item {
 	func asInventoryItem() -> InventoryItem {
-		GenericItem(name: name, sellIn: sellIn, quality: quality)
-	}
-}
-
-struct AgedBrie : InventoryItem {
-	func updateQuality() -> AgedBrie {
-		let newSellIn = sellIn - 1
-
-		var newQuality = quality
-		
-		if newSellIn >= 0 {
-			newQuality = quality + 1
-		} else {
-			newQuality = quality + 2
-		}
-
-		if newQuality > 50 {
-			newQuality = 50
-		}
-		return .init(name: name, sellIn: newSellIn, quality: newQuality)
-	}
-	
-	let name: String
-	let sellIn: Int
-	let quality: Int
-}
-
-struct BackstagePasses : InventoryItem {
-	func updateQuality() -> BackstagePasses {
-		let newSellIn = sellIn - 1
-
-		var newQuality = quality
-		if newSellIn < 5 {
-			newQuality = quality + 3
-		} else if newSellIn < 10 {
-			newQuality = quality + 2
-		} else {
-			newQuality = quality + 1
-		}
-
-		if newQuality > 50 {
-			newQuality = 50
+		if name == "Sulfuras, Hand of Ragnaros" {
+			return SulfurasHandOfRagnaros(name: name, sellIn: sellIn, quality: quality)
 		}
 		
-		if newSellIn < 0 {
-			newQuality = 0
+		if name == "Aged Brie" {
+			return AgedBrie(name: name, sellIn: sellIn, quality: quality)
 		}
-
-		return .init(name: name, sellIn: newSellIn, quality: newQuality)
-	}
-	
-	let name: String
-	let sellIn: Int
-	let quality: Int
-}
-
-struct SulfurasHandOfRagnaros : InventoryItem {
-	func updateQuality() -> SulfurasHandOfRagnaros {
-		return self
-	}
-	
-	let name: String
-	let sellIn: Int
-	let quality: Int
-}
-
-struct GenericItem : InventoryItem {
-	func updateQuality() -> GenericItem {
-		let newSellIn = sellIn - 1
 		
-		var newQuality = quality
-		if newSellIn >= 0 {
-			newQuality = quality - 1
-		} else {
-			newQuality = quality - 2
+		if name == "Backstage passes to a TAFKAL80ETC concert" {
+			return BackstagePasses(name: name, sellIn: sellIn, quality: quality)
 		}
 
-		if newQuality < 0 {
-			newQuality = 0
-		}
-
-		return .init(name: name, sellIn: newSellIn, quality: newQuality)
+		return GenericInventoryItem(name: name, sellIn: sellIn, quality: quality)
 	}
-	
-	let name: String
-	let sellIn: Int
-	let quality: Int
 }
+
+
