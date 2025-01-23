@@ -9,20 +9,6 @@ struct DexterityVest {
 		return GildedRose(items: items)
 	}
 	
-	private func expect(sellIn: Int,
-						quality: Int,
-						_ app: GildedRose,
-						fileID: String = #fileID,
-						filePath: String = #filePath,
-						line: Int = #line,
-						column: Int = #column) {
-		
-		let sourceLocation = SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
-		
-		#expect(app.items[0].sellIn == sellIn, sourceLocation: sourceLocation)
-		#expect(app.items[0].quality == quality, sourceLocation: sourceLocation)
-	}
-	
 	@Test
 	func nameIsSame() {
 		let app = appWithDexterityVest(sellIn: 5, quality: 5)
@@ -99,3 +85,5 @@ struct DexterityVest {
 		expect(sellIn: 3, quality: 0, app)
 	}
 }
+
+
