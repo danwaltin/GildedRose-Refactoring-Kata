@@ -8,7 +8,7 @@ struct SulfurasHandOfRagnaros {
 	}
 	
 	@Test
-	func nameIsSame() {
+	func name_is_same() {
 		let app = appWithSulfurasHandOfRagnaros(sellIn: 5, quality: 5)
 		
 		#expect(app.items[0].name == "Sulfuras, Hand of Ragnaros")
@@ -23,14 +23,14 @@ struct SulfurasHandOfRagnaros {
 	}
 	
 	@Test
-	func startingAtZero_day0() {
+	func starting_at_zero_day0() {
 		let app = appWithSulfurasHandOfRagnaros(sellIn: 0, quality: 80)
 		
 		expect(sellIn: 0, quality: 80, app)
 	}
 	
 	@Test
-	func sellInAndQualityNeverDecreases() {
+	func sellIn_and_quality_never_decreases() {
 		let app = appWithSulfurasHandOfRagnaros(sellIn: 8, quality: 80)
 		
 		app.updateQuality()
@@ -43,7 +43,7 @@ struct SulfurasHandOfRagnaros {
 	}
 	
 	@Test
-	func qualityAfterSellDate() {
+	func quality_after_sellDate() {
 		let app = appWithSulfurasHandOfRagnaros(sellIn: 1, quality: 80)
 		
 		app.updateQuality()
@@ -56,7 +56,7 @@ struct SulfurasHandOfRagnaros {
 	}
 
 	@Test
-	func requirementsSaysQualityIsAlways80ButCanActuallyStartAsAnything() {
+	func requirements_says_quality_is_always_80_but_can_actually_start_as_anything() {
 		let app = appWithSulfurasHandOfRagnaros(sellIn: 1, quality: 70)
 		
 		expect(sellIn: 1, quality: 70, app)

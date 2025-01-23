@@ -9,7 +9,7 @@ struct AgedBrie {
 	}
 	
 	@Test
-	func nameIsSame() {
+	func name_is_same() {
 		let app = appWithAgedBrie(sellIn: 5, quality: 5)
 		
 		#expect(app.items[0].name == "Aged Brie")
@@ -24,7 +24,7 @@ struct AgedBrie {
 	}
 	
 	@Test
-	func startingAtZero_day0() {
+	func starting_at_zero_day0() {
 		let app = appWithAgedBrie(sellIn: 0, quality: 0)
 		
 		expect(sellIn: 0, quality: 0, app)
@@ -55,7 +55,7 @@ struct AgedBrie {
 	}
 	
 	@Test
-	func qualityIncreasesTwiceAsFastAfterSellDate() {
+	func quality_increases_twice_as_fast_after_sell_date() {
 		let app = appWithAgedBrie(sellIn: 1, quality: 6)
 		
 		app.updateQuality()
@@ -72,7 +72,7 @@ struct AgedBrie {
 	}
 	
 	@Test
-	func qualityNeverGoOver50_beforeSellDate() {
+	func quality_never_go_above50_before_sellDate() {
 		let app = appWithAgedBrie(sellIn: 5, quality: 49)
 		
 		app.updateQuality()
@@ -85,7 +85,7 @@ struct AgedBrie {
 	}
 	
 	@Test
-	func qualityNeverGoOver50_afterSellDate() {
+	func quality_never_go_above_50_after_sellDate() {
 		let app = appWithAgedBrie(sellIn: 1, quality: 48)
 		
 		app.updateQuality()

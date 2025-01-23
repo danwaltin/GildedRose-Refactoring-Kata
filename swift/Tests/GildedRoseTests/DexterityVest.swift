@@ -9,7 +9,7 @@ struct DexterityVest {
 	}
 	
 	@Test
-	func nameIsSame() {
+	func name_is_same() {
 		let app = appWithDexterityVest(sellIn: 5, quality: 5)
 		
 		#expect(app.items[0].name == "+5 Dexterity Vest")
@@ -24,7 +24,7 @@ struct DexterityVest {
 	}
 	
 	@Test
-	func startingAtZero_day0() {
+	func starting_at_zero_day0() {
 		let app = appWithDexterityVest(sellIn: 0, quality: 0)
 		
 		expect(sellIn: 0, quality: 0, app)
@@ -55,7 +55,7 @@ struct DexterityVest {
 	}
 	
 	@Test
-	func qualityDecreasesTwiceAsFastAfterSellDate() {
+	func quality_decreases_twice_as_fast_after_sell_date() {
 		let app = appWithDexterityVest(sellIn: 1, quality: 6)
 		
 		app.updateQuality()
@@ -72,7 +72,7 @@ struct DexterityVest {
 	}
 	
 	@Test
-	func qualityNeverGoUnder0() {
+	func quality_never_fall_below_0() {
 		let app = appWithDexterityVest(sellIn: 5, quality: 1)
 		
 		app.updateQuality()
