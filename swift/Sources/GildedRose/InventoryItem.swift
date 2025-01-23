@@ -34,7 +34,7 @@ extension Item {
 			return BackstagePasses(name: name, sellIn: sellIn, quality: quality)
 		}
 
-		return GenericInventoryItem(name: name, sellIn: sellIn, quality: quality)
+		return NormalInventoryItem(name: name, sellIn: sellIn, quality: quality)
 	}
 }
 

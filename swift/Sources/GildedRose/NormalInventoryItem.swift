@@ -1,5 +1,5 @@
 //
-//  GenericInventoryItem.swift
+//  NormalInventoryItem.swift
 //  GildedRose
 //
 //  Created by Dan Waltin on 2025-01-23.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct GenericInventoryItem : InventoryItem {
-	func updateQuality() -> GenericInventoryItem {
+struct NormalInventoryItem : InventoryItem {
+	func updateQuality() -> NormalInventoryItem {
 		let newSellIn = sellIn - 1
 		
 		var newQuality = quality
