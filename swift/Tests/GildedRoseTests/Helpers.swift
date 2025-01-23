@@ -54,6 +54,10 @@ func backstagePasses(sellIn: Int, quality: Int) -> Item {
 	Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: sellIn, quality: quality)
 }
 
+func conjured(sellIn: Int, quality: Int) -> Item {
+	Item(name: "Conjured", sellIn: sellIn, quality: quality)
+}
+
 func dexterityVest(sellIn: Int, quality: Int) -> Item {
 	Item(name: "+5 Dexterity Vest", sellIn: sellIn, quality: quality)
 }
