@@ -1,6 +1,8 @@
 @testable import GildedRose
 import Testing
 
+
+
 struct DexterityVest {
 	
 	private func appWithDexterityVest(sellIn: Int, quality: Int) -> GildedRose {
@@ -38,7 +40,7 @@ struct DexterityVest {
 	}
 	
 	@Test
-	func sellIn_and_quality_decreases_by1_each_day() {
+	func sellIn_and_quality_decreases_by_1_each_day() {
 		let app = appWithDexterityVest(sellIn: 8, quality: 16)
 		
 		app.updateQuality()

@@ -38,7 +38,7 @@ struct AgedBrie {
 	}
 	
 	@Test
-	func sellIn_and_quality_increases_by1_each_day() {
+	func sellIn_and_quality_increases_by_1_each_day() {
 		let app = appWithAgedBrie(sellIn: 8, quality: 16)
 		
 		app.updateQuality()
@@ -72,7 +72,7 @@ struct AgedBrie {
 	}
 	
 	@Test
-	func quality_never_go_above50_before_sellDate() {
+	func quality_never_go_above_50_before_sellDate() {
 		let app = appWithAgedBrie(sellIn: 5, quality: 49)
 		
 		app.updateQuality()

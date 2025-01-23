@@ -40,7 +40,7 @@ struct ElixirOfTheMongoose {
 	}
 	
 	@Test
-	func sellIn_and_quality_decreases_by1_each_day() {
+	func sellIn_and_quality_decreases_by_1_each_day() {
 		let app = appWithElixirOfTheMongoose(sellIn: 8, quality: 16)
 		
 		app.updateQuality()
