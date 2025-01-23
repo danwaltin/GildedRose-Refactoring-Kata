@@ -16,6 +16,11 @@ protocol InventoryItem {
 	func updateQuality() -> Self
 }
 
+extension InventoryItem {
+	func asItem() -> Item {
+		.init(name: name, sellIn: sellIn, quality: quality)
+	}
+}
 extension Item {
 	func asInventoryItem() -> InventoryItem {
 		GenericItem(name: name, sellIn: sellIn, quality: quality)
@@ -23,10 +28,6 @@ extension Item {
 }
 
 struct AgedBrie : InventoryItem {
-	func asItem() -> Item {
-		.init(name: name, sellIn: sellIn, quality: quality)
-	}
-	
 	func updateQuality() -> AgedBrie {
 		let newSellIn = sellIn - 1
 
@@ -50,10 +51,6 @@ struct AgedBrie : InventoryItem {
 }
 
 struct BackstagePasses : InventoryItem {
-	func asItem() -> Item {
-		.init(name: name, sellIn: sellIn, quality: quality)
-	}
-
 	func updateQuality() -> BackstagePasses {
 		let newSellIn = sellIn - 1
 
@@ -83,10 +80,6 @@ struct BackstagePasses : InventoryItem {
 }
 
 struct SulfurasHandOfRagnaros : InventoryItem {
-	func asItem() -> Item {
-		.init(name: name, sellIn: sellIn, quality: quality)
-	}
-
 	func updateQuality() -> SulfurasHandOfRagnaros {
 		return self
 	}
@@ -97,10 +90,6 @@ struct SulfurasHandOfRagnaros : InventoryItem {
 }
 
 struct GenericItem : InventoryItem {
-	func asItem() -> Item {
-		.init(name: name, sellIn: sellIn, quality: quality)
-	}
-
 	func updateQuality() -> GenericItem {
 		let newSellIn = sellIn - 1
 		
