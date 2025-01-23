@@ -1,5 +1,4 @@
 @testable import GildedRose
-
 import Testing
 
 struct DexterityVest {

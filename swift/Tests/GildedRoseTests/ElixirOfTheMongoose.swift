@@ -1,11 +1,3 @@
-//
-//  ElixirOfTheMongoose.swift
-//  GildedRose
-//
-//  Created by Dan Waltin on 2025-01-23.
-//
-
-
 @testable import GildedRose
 import Testing
 
