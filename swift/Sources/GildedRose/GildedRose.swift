@@ -27,12 +27,15 @@ public class GildedRose {
 	}
 	
 	private func updateAgedBrie(_ item: Item) -> Item {
-		var updated = item
+
+		let updated = item
+
+		updated.sellIn = updated.sellIn - 1
+
 		if updated.quality < 50 {
 			updated.quality = updated.quality + 1
 		}
 		
-		updated.sellIn = updated.sellIn - 1
 		
 		if updated.sellIn < 0 {
 			if updated.quality < 50 {
@@ -47,24 +50,24 @@ public class GildedRose {
 	}
 	
 	private func updateBackstagePasses(_ item: Item) -> Item {
-		var updated = item
+		let updated = item
+		updated.sellIn = updated.sellIn - 1
 		if updated.quality < 50 {
 			updated.quality = updated.quality + 1
 			
-			if updated.sellIn < 11 {
+			if updated.sellIn < 10 {
 				if updated.quality < 50 {
 					updated.quality = updated.quality + 1
 				}
 			}
 			
-			if updated.sellIn < 6 {
+			if updated.sellIn < 5 {
 				if updated.quality < 50 {
 					updated.quality = updated.quality + 1
 				}
 			}
 		}
 
-		updated.sellIn = updated.sellIn - 1
 
 		if updated.sellIn < 0 {
 			updated.quality = 0
@@ -74,11 +77,12 @@ public class GildedRose {
 	}
 	
 	private func updateGeneric(_ item: Item) -> Item {
-		var updated = item
+		let updated = item
+		updated.sellIn = updated.sellIn - 1
+
 		if updated.quality > 0 {
 			updated.quality = updated.quality - 1
 		}
-		updated.sellIn = updated.sellIn - 1
 		
 		if updated.sellIn < 0 {
 			if updated.quality > 0 {
