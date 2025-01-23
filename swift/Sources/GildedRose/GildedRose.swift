@@ -6,11 +6,7 @@ public class GildedRose {
 	}
 	
 	public func updateQuality() {
-		for i in 0 ..< items.count {
-			var updated = updateItem(items[i])
-			items[i].sellIn = updated.sellIn
-			items[i].quality = updated.quality
-		}
+		items = items.map { updateItem($0)}
 	}
 	
 	private func updateItem(_ item: Item) -> Item {
@@ -24,6 +20,16 @@ public class GildedRose {
 			if updated.quality < 50 {
 				updated.quality = updated.quality + 1
 			}
+			
+			updated.sellIn = updated.sellIn - 1
+			
+			if updated.sellIn < 0 {
+				if updated.quality < 50 {
+					updated.quality = updated.quality + 1
+				}
+			}
+			return updated
+
 		} else if updated.name == "Backstage passes to a TAFKAL80ETC concert" {
 			if updated.quality < 50 {
 				updated.quality = updated.quality + 1
@@ -52,11 +58,6 @@ public class GildedRose {
 		updated.sellIn = updated.sellIn - 1
 		
 		if updated.sellIn < 0 {
-			if updated.name == "Aged Brie" {
-				if updated.quality < 50 {
-					updated.quality = updated.quality + 1
-				}
-			} else {
 				if updated.name == "Backstage passes to a TAFKAL80ETC concert" {
 					updated.quality = 0
 				} else {
@@ -64,7 +65,6 @@ public class GildedRose {
 						updated.quality = updated.quality - 1
 					}
 				}
-			}
 		}
 		return updated
 	}
