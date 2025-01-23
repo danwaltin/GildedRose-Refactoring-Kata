@@ -22,34 +22,11 @@ public class GildedRose {
 		}
 		
 		if item.name == "Backstage passes to a TAFKAL80ETC concert" {
-			return updateBackstagePasses(item)
+			let inventoryItem = BackstagePasses(name: item.name, sellIn: item.sellIn, quality: item.quality)
+			return inventoryItem.updateQuality().asItem()
 		}
 
 		let inventoryItem = GenericItem(name: item.name, sellIn: item.sellIn, quality: item.quality)
 		return inventoryItem.updateQuality().asItem()
-	}
-		
-	private func updateBackstagePasses(_ item: Item) -> Item {
-		let updated = item
-		updated.sellIn = updated.sellIn - 1
-
-		
-		if updated.sellIn < 5 {
-			updated.quality = updated.quality + 3
-		} else if updated.sellIn < 10 {
-			updated.quality = updated.quality + 2
-		} else {
-			updated.quality = updated.quality + 1
-		}
-
-		if updated.quality > 50 {
-			updated.quality = 50
-		}
-		
-		if updated.sellIn < 0 {
-			updated.quality = 0
-		}
-		
-		return updated
 	}
 }
