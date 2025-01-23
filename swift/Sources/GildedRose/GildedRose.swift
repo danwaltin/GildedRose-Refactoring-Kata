@@ -54,12 +54,11 @@ public class GildedRose {
 		updated.sellIn = updated.sellIn - 1
 
 		
-			updated.quality = updated.quality + 1
-		if updated.sellIn < 10 {
-			updated.quality = updated.quality + 1
-		}
-		
 		if updated.sellIn < 5 {
+			updated.quality = updated.quality + 3
+		} else if updated.sellIn < 10 {
+			updated.quality = updated.quality + 2
+		} else {
 			updated.quality = updated.quality + 1
 		}
 
