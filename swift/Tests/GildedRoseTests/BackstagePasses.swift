@@ -3,23 +3,22 @@ import Testing
 
 struct BackstagePasses {
 	private func appWithBackstagePasses(sellIn: Int, quality: Int) -> GildedRose {
-		let items = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: sellIn, quality: quality)]
-		return GildedRose(items: items)
+		appWithItem(backstagePasses(sellIn: sellIn, quality: quality))
 	}
 	
 	@Test
 	func name_is_same() {
 		let app = appWithBackstagePasses(sellIn: 5, quality: 5)
 		
-		#expect(app.items[0].name == "Backstage passes to a TAFKAL80ETC concert")
+		expect(name: "Backstage passes to a TAFKAL80ETC concert", app)
+		
+		app.updateQuality()
+
+		expect(name: "Backstage passes to a TAFKAL80ETC concert", app)
 		
 		app.updateQuality()
 		
-		#expect(app.items[0].name == "Backstage passes to a TAFKAL80ETC concert")
-		
-		app.updateQuality()
-		
-		#expect(app.items[0].name == "Backstage passes to a TAFKAL80ETC concert")
+		expect(name: "Backstage passes to a TAFKAL80ETC concert", app)
 	}
 	
 	@Test

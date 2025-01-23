@@ -3,23 +3,22 @@ import Testing
 
 struct SulfurasHandOfRagnaros {
 	private func appWithSulfurasHandOfRagnaros(sellIn: Int, quality: Int) -> GildedRose {
-		let items = [Item(name: "Sulfuras, Hand of Ragnaros", sellIn: sellIn, quality: quality)]
-		return GildedRose(items: items)
+		appWithItem(sulfuras(sellIn: sellIn, quality: quality))
 	}
 	
 	@Test
 	func name_is_same() {
 		let app = appWithSulfurasHandOfRagnaros(sellIn: 5, quality: 5)
 		
-		#expect(app.items[0].name == "Sulfuras, Hand of Ragnaros")
+		expect(name: "Sulfuras, Hand of Ragnaros", app)
 		
 		app.updateQuality()
 		
-		#expect(app.items[0].name == "Sulfuras, Hand of Ragnaros")
+		expect(name: "Sulfuras, Hand of Ragnaros", app)
 		
 		app.updateQuality()
 		
-		#expect(app.items[0].name == "Sulfuras, Hand of Ragnaros")
+		expect(name: "Sulfuras, Hand of Ragnaros", app)
 	}
 	
 	@Test

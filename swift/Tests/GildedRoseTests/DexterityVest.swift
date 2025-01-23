@@ -1,28 +1,24 @@
 @testable import GildedRose
 import Testing
 
-
-
 struct DexterityVest {
-	
 	private func appWithDexterityVest(sellIn: Int, quality: Int) -> GildedRose {
-		let items = [Item(name: "+5 Dexterity Vest", sellIn: sellIn, quality: quality)]
-		return GildedRose(items: items)
+		appWithItem(dexterityVest(sellIn: sellIn, quality: quality))
 	}
 	
 	@Test
 	func name_is_same() {
 		let app = appWithDexterityVest(sellIn: 5, quality: 5)
 		
-		#expect(app.items[0].name == "+5 Dexterity Vest")
+		expect(name: "+5 Dexterity Vest", app)
 		
 		app.updateQuality()
 		
-		#expect(app.items[0].name == "+5 Dexterity Vest")
+		expect(name: "+5 Dexterity Vest", app)
 		
 		app.updateQuality()
 		
-		#expect(app.items[0].name == "+5 Dexterity Vest")
+		expect(name: "+5 Dexterity Vest", app)
 	}
 	
 	@Test

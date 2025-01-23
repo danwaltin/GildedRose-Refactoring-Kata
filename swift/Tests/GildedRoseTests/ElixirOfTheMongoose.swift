@@ -1,28 +1,24 @@
 @testable import GildedRose
 import Testing
 
-
-
 struct ElixirOfTheMongoose {
-	
 	private func appWithElixirOfTheMongoose(sellIn: Int, quality: Int) -> GildedRose {
-		let items = [Item(name: "Elixir of the Mongoose", sellIn: sellIn, quality: quality)]
-		return GildedRose(items: items)
+		appWithItem(elixirOfTheMongoose(sellIn: sellIn, quality: quality))
 	}
 	
 	@Test
 	func name_is_same() {
 		let app = appWithElixirOfTheMongoose(sellIn: 5, quality: 5)
 		
-		#expect(app.items[0].name == "Elixir of the Mongoose")
+		expect(name: "Elixir of the Mongoose", app)
 		
 		app.updateQuality()
 		
-		#expect(app.items[0].name == "Elixir of the Mongoose")
-		
+		expect(name: "Elixir of the Mongoose", app)
+
 		app.updateQuality()
 		
-		#expect(app.items[0].name == "Elixir of the Mongoose")
+		expect(name: "Elixir of the Mongoose", app)
 	}
 	
 	@Test
