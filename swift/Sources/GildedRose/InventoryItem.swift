@@ -12,7 +12,6 @@ protocol InventoryItem {
 	var sellIn: Int { get }
 	var quality: Int  { get }
 	
-	func asItem() -> Item
 	func updateQuality() -> Self
 }
 
