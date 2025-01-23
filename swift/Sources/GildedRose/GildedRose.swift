@@ -17,7 +17,8 @@ public class GildedRose {
 		}
 		
 		if item.name == "Aged Brie" {
-			return updateAgedBrie(item)
+			let inventoryItem = AgedBrie(name: item.name, sellIn: item.sellIn, quality: item.quality)
+			return inventoryItem.updateQuality().asItem()
 		}
 		
 		if item.name == "Backstage passes to a TAFKAL80ETC concert" {
@@ -27,26 +28,7 @@ public class GildedRose {
 		let inventoryItem = GenericItem(name: item.name, sellIn: item.sellIn, quality: item.quality)
 		return inventoryItem.updateQuality().asItem()
 	}
-	
-	private func updateAgedBrie(_ item: Item) -> Item {
-
-		let updated = item
-
-		updated.sellIn = updated.sellIn - 1
-
-		if updated.sellIn >= 0 {
-			updated.quality = updated.quality + 1
-		} else {
-			updated.quality = updated.quality + 2
-		}
-
-		if updated.quality > 50 {
-			updated.quality = 50
-		}
-
-		return updated
-	}
-	
+		
 	private func updateBackstagePasses(_ item: Item) -> Item {
 		let updated = item
 		updated.sellIn = updated.sellIn - 1
@@ -68,24 +50,6 @@ public class GildedRose {
 			updated.quality = 0
 		}
 		
-		return updated
-	}
-	
-	private func updateGeneric(_ item: Item) -> Item {
-		let updated = item
-		
-		updated.sellIn = updated.sellIn - 1
-		
-		if updated.sellIn >= 0 {
-			updated.quality = updated.quality - 1
-		} else {
-			updated.quality = updated.quality - 2
-		}
-
-		if updated.quality < 0 {
-			updated.quality = 0
-		}
-
 		return updated
 	}
 }

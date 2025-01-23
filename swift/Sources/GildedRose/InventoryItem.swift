@@ -28,7 +28,20 @@ struct AgedBrie : InventoryItem {
 	}
 	
 	func updateQuality() -> AgedBrie {
-		return self
+		let newSellIn = sellIn - 1
+
+		var newQuality = quality
+		
+		if newSellIn >= 0 {
+			newQuality = quality + 1
+		} else {
+			newQuality = quality + 2
+		}
+
+		if newQuality > 50 {
+			newQuality = 50
+		}
+		return .init(name: name, sellIn: newSellIn, quality: newQuality)
 	}
 	
 	let name: String
