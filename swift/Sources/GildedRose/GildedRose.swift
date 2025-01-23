@@ -7,53 +7,65 @@ public class GildedRose {
 	
 	public func updateQuality() {
 		for i in 0 ..< items.count {
-			if items[i].name == "Sulfuras, Hand of Ragnaros" {
-				continue
+			var updated = updateItem(items[i])
+			items[i].sellIn = updated.sellIn
+			items[i].quality = updated.quality
+		}
+	}
+	
+	private func updateItem(_ item: Item) -> Item {
+		var updated = item
+
+		if updated.name == "Sulfuras, Hand of Ragnaros" {
+			return updated
+		}
+		
+		if updated.name == "Aged Brie" {
+			if updated.quality < 50 {
+				updated.quality = updated.quality + 1
 			}
-			
-			if items[i].name == "Aged Brie" ||
-				items[i].name == "Backstage passes to a TAFKAL80ETC concert" {
-				if items[i].quality < 50 {
-					items[i].quality = items[i].quality + 1
-					
-					if items[i].name == "Backstage passes to a TAFKAL80ETC concert" {
-						if items[i].sellIn < 11 {
-							if items[i].quality < 50 {
-								items[i].quality = items[i].quality + 1
-							}
-						}
-						
-						if items[i].sellIn < 6 {
-							if items[i].quality < 50 {
-								items[i].quality = items[i].quality + 1
-							}
+		} else if updated.name == "Backstage passes to a TAFKAL80ETC concert" {
+			if updated.quality < 50 {
+				updated.quality = updated.quality + 1
+				
+				if updated.name == "Backstage passes to a TAFKAL80ETC concert" {
+					if updated.sellIn < 11 {
+						if updated.quality < 50 {
+							updated.quality = updated.quality + 1
 						}
 					}
+					
+					if updated.sellIn < 6 {
+						if updated.quality < 50 {
+							updated.quality = updated.quality + 1
+						}
+					}
+				}
+			}
+
+		} else {
+			if updated.quality > 0 {
+				updated.quality = updated.quality - 1
+			}
+		}
+		
+		updated.sellIn = updated.sellIn - 1
+		
+		if updated.sellIn < 0 {
+			if updated.name == "Aged Brie" {
+				if updated.quality < 50 {
+					updated.quality = updated.quality + 1
 				}
 			} else {
-				if items[i].quality > 0 {
-					items[i].quality = items[i].quality - 1
-				}
-			}
-			
-			items[i].sellIn = items[i].sellIn - 1
-			
-			if items[i].sellIn < 0 {
-				if items[i].name == "Aged Brie" {
-					if items[i].quality < 50 {
-						items[i].quality = items[i].quality + 1
-					}
+				if updated.name == "Backstage passes to a TAFKAL80ETC concert" {
+					updated.quality = 0
 				} else {
-					if items[i].name == "Backstage passes to a TAFKAL80ETC concert" {
-						items[i].quality = 0
-					} else {
-						if items[i].quality > 0 {
-							items[i].quality = items[i].quality - 1
-						}
+					if updated.quality > 0 {
+						updated.quality = updated.quality - 1
 					}
 				}
 			}
 		}
+		return updated
 	}
-	
 }
