@@ -10,56 +10,74 @@ public class GildedRose {
 	}
 	
 	private func updateItem(_ item: Item) -> Item {
-		var updated = item
 		
-		if updated.name == "Sulfuras, Hand of Ragnaros" {
-			return updated
+		if item.name == "Sulfuras, Hand of Ragnaros" {
+			return updateSulfuras(item)
 		}
 		
-		if updated.name == "Aged Brie" {
+		if item.name == "Aged Brie" {
+			return updateAgedBrie(item)
+		}
+		
+		if item.name == "Backstage passes to a TAFKAL80ETC concert" {
+			return updateBackstagePasses(item)
+		}
+
+		return updateGeneric(item)
+	}
+	
+	private func updateAgedBrie(_ item: Item) -> Item {
+		var updated = item
+		if updated.quality < 50 {
+			updated.quality = updated.quality + 1
+		}
+		
+		updated.sellIn = updated.sellIn - 1
+		
+		if updated.sellIn < 0 {
 			if updated.quality < 50 {
 				updated.quality = updated.quality + 1
 			}
+		}
+		return updated
+	}
+	
+	private func updateSulfuras(_ item: Item) -> Item {
+		return item
+	}
+	
+	private func updateBackstagePasses(_ item: Item) -> Item {
+		var updated = item
+		if updated.quality < 50 {
+			updated.quality = updated.quality + 1
 			
-			updated.sellIn = updated.sellIn - 1
-			
-			if updated.sellIn < 0 {
+			if updated.sellIn < 11 {
 				if updated.quality < 50 {
 					updated.quality = updated.quality + 1
 				}
 			}
-			return updated
 			
-		} else if updated.name == "Backstage passes to a TAFKAL80ETC concert" {
-			if updated.quality < 50 {
-				updated.quality = updated.quality + 1
-				
-				if updated.sellIn < 11 {
-					if updated.quality < 50 {
-						updated.quality = updated.quality + 1
-					}
+			if updated.sellIn < 6 {
+				if updated.quality < 50 {
+					updated.quality = updated.quality + 1
 				}
-				
-				if updated.sellIn < 6 {
-					if updated.quality < 50 {
-						updated.quality = updated.quality + 1
-					}
-				}
-			}
-
-			updated.sellIn = updated.sellIn - 1
-
-			if updated.sellIn < 0 {
-				updated.quality = 0
-			}
-			
-			return updated
-		} else {
-			if updated.quality > 0 {
-				updated.quality = updated.quality - 1
 			}
 		}
+
+		updated.sellIn = updated.sellIn - 1
+
+		if updated.sellIn < 0 {
+			updated.quality = 0
+		}
 		
+		return updated
+	}
+	
+	private func updateGeneric(_ item: Item) -> Item {
+		var updated = item
+		if updated.quality > 0 {
+			updated.quality = updated.quality - 1
+		}
 		updated.sellIn = updated.sellIn - 1
 		
 		if updated.sellIn < 0 {
