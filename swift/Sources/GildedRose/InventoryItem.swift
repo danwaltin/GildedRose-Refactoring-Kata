@@ -18,13 +18,13 @@ protocol InventoryItem {
 
 extension Item {
 	func asInventoryItem() -> InventoryItem {
-		GenericItem(name: "", sellIn: 0, quality: 0)
+		GenericItem(name: name, sellIn: sellIn, quality: quality)
 	}
 }
 
 struct AgedBrie : InventoryItem {
 	func asItem() -> Item {
-		return .init(name: "", sellIn: 0, quality: 0)
+		.init(name: name, sellIn: sellIn, quality: quality)
 	}
 	
 	func updateQuality() -> AgedBrie {
@@ -38,7 +38,7 @@ struct AgedBrie : InventoryItem {
 
 struct BackstagePasses : InventoryItem {
 	func asItem() -> Item {
-		return .init(name: "", sellIn: 0, quality: 0)
+		.init(name: name, sellIn: sellIn, quality: quality)
 	}
 
 	func updateQuality() -> BackstagePasses {
@@ -52,7 +52,7 @@ struct BackstagePasses : InventoryItem {
 
 struct SulfurasHandOfRagnaros : InventoryItem {
 	func asItem() -> Item {
-		return .init(name: name, sellIn: sellIn, quality: quality)
+		.init(name: name, sellIn: sellIn, quality: quality)
 	}
 
 	func updateQuality() -> SulfurasHandOfRagnaros {
@@ -66,11 +66,24 @@ struct SulfurasHandOfRagnaros : InventoryItem {
 
 struct GenericItem : InventoryItem {
 	func asItem() -> Item {
-		return .init(name: "", sellIn: 0, quality: 0)
+		.init(name: name, sellIn: sellIn, quality: quality)
 	}
 
 	func updateQuality() -> GenericItem {
-		return self
+		let newSellIn = sellIn - 1
+		
+		var newQuality = quality
+		if newSellIn >= 0 {
+			newQuality = quality - 1
+		} else {
+			newQuality = quality - 2
+		}
+
+		if newQuality < 0 {
+			newQuality = 0
+		}
+
+		return .init(name: name, sellIn: newSellIn, quality: newQuality)
 	}
 	
 	let name: String

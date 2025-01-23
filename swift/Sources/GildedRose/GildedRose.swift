@@ -24,7 +24,8 @@ public class GildedRose {
 			return updateBackstagePasses(item)
 		}
 
-		return updateGeneric(item)
+		let inventoryItem = GenericItem(name: item.name, sellIn: item.sellIn, quality: item.quality)
+		return inventoryItem.updateQuality().asItem()
 	}
 	
 	private func updateAgedBrie(_ item: Item) -> Item {
