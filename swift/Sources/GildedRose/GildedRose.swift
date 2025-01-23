@@ -52,22 +52,21 @@ public class GildedRose {
 	private func updateBackstagePasses(_ item: Item) -> Item {
 		let updated = item
 		updated.sellIn = updated.sellIn - 1
-		if updated.quality < 50 {
+
+		
 			updated.quality = updated.quality + 1
-			
-			if updated.sellIn < 10 {
-				if updated.quality < 50 {
-					updated.quality = updated.quality + 1
-				}
-			}
-			
-			if updated.sellIn < 5 {
-				if updated.quality < 50 {
-					updated.quality = updated.quality + 1
-				}
-			}
+		if updated.sellIn < 10 {
+			updated.quality = updated.quality + 1
+		}
+		
+		if updated.sellIn < 5 {
+			updated.quality = updated.quality + 1
 		}
 
+		if updated.quality > 50 {
+			updated.quality = 50
+		}
+		
 		if updated.sellIn < 0 {
 			updated.quality = 0
 		}
