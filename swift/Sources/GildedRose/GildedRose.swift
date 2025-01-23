@@ -32,16 +32,16 @@ public class GildedRose {
 
 		updated.sellIn = updated.sellIn - 1
 
-		if updated.quality < 50 {
+		if updated.sellIn >= 0 {
 			updated.quality = updated.quality + 1
+		} else {
+			updated.quality = updated.quality + 2
 		}
-		
-		
-		if updated.sellIn < 0 {
-			if updated.quality < 50 {
-				updated.quality = updated.quality + 1
-			}
+
+		if updated.quality > 50 {
+			updated.quality = 50
 		}
+
 		return updated
 	}
 	
@@ -68,7 +68,6 @@ public class GildedRose {
 			}
 		}
 
-
 		if updated.sellIn < 0 {
 			updated.quality = 0
 		}
@@ -78,17 +77,19 @@ public class GildedRose {
 	
 	private func updateGeneric(_ item: Item) -> Item {
 		let updated = item
-		updated.sellIn = updated.sellIn - 1
-
-		if updated.quality > 0 {
-			updated.quality = updated.quality - 1
-		}
 		
-		if updated.sellIn < 0 {
-			if updated.quality > 0 {
-				updated.quality = updated.quality - 1
-			}
+		updated.sellIn = updated.sellIn - 1
+		
+		if updated.sellIn >= 0 {
+			updated.quality = updated.quality - 1
+		} else {
+			updated.quality = updated.quality - 2
 		}
+
+		if updated.quality < 0 {
+			updated.quality = 0
+		}
+
 		return updated
 	}
 }
